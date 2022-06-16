@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="3d95c6fb-c67e-4028-8665-2666e9a9be08">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="name_customer" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="kode_kamar" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select customer.nama, customer.no_hp, kamar.nama As Kamar, transaksi.checkin, transaksi.checkout, transaksi.total from transaksi inner join customer on(transaksi.kode_user=customer.nik) inner join kamar on(transaksi.kode_kamar=kamar.kode)where transaksi.kode_user=$P{name_customer}]]>
+	</queryString>
+	<field name="nama" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="no_hp" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Kamar" class="java.lang.String"/>
+	<field name="checkin" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="checkout" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="total" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="205" y="21" width="147" height="58" uuid="d77e56ff-dc4b-4311-8ba2-3f2e066ca2ef"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="40"/>
+				</textElement>
+				<text><![CDATA[MyHotel]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch">
+			<staticText>
+				<reportElement x="189" y="15" width="183" height="20" uuid="3f4d7891-3fd4-487e-99ad-588b300088e1"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[JLN JEND SUDIRMAN,WATAMPONE]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="39" splitType="Stretch">
+			<staticText>
+				<reportElement x="205" y="4" width="147" height="35" uuid="b88f5da2-5862-411b-b178-9521280cd19c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="16"/>
+				</textElement>
+				<text><![CDATA[Bukti Transaksi]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="76" splitType="Stretch">
+			<staticText>
+				<reportElement x="126" y="11" width="50" height="20" uuid="cda78fa4-0edc-44be-be6f-c58faffbe749"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[NAMA :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="126" y="31" width="50" height="20" uuid="f6083e52-5e2e-4ef9-b3fb-115a1e315c89"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[NO HP :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="126" y="51" width="50" height="20" uuid="065a0c94-39e2-448e-9989-2fe6230e85a8"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[KAMAR :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="332" y="11" width="70" height="20" uuid="edc07224-be49-4951-b959-087f331c8afb"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[CHECK IN :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="332" y="31" width="70" height="20" uuid="c0af3a1e-a3d6-4ce0-ab12-1674bbe23f36"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[CHECK OUT :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="332" y="51" width="70" height="20" uuid="a6bc656f-4a55-4c1b-b683-a9d84d5939be"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[TOTAL :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="176" y="11" width="100" height="20" uuid="91c1610e-de01-4a15-8898-4137a4e2c142"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{nama}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="176" y="31" width="100" height="20" uuid="fcfb6380-fcf5-4b88-a96d-bf70da296022"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{no_hp}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="176" y="51" width="100" height="20" uuid="5a7630de-1636-4ffb-a1da-6eb8d922a2ae"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{Kamar}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="402" y="11" width="100" height="20" uuid="6a1466cb-4514-46f1-a43f-b2c3d63887a0"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{checkin}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="402" y="31" width="100" height="20" uuid="d8bbbdba-2acf-4366-a90e-98fbba550970"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{checkout}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="402" y="51" width="100" height="20" uuid="e53c6948-c99f-413b-bd5e-fd2b5c967c4d"/>
+				<textElement verticalAlignment="Middle">
+					<font isStrikeThrough="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{total}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="437" y="34" width="100" height="20" uuid="62081383-ed7f-4322-97b2-19786d97f2bc"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
